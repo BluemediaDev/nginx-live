@@ -1,11 +1,14 @@
 steps:
   docker:
     image: woodpeckerci/plugin-docker-buildx
-    secrets: [docker_username, docker_password]
     settings:
       pull_image: true
       registry: git.bluemedia.dev
       repo: git.bluemedia.dev/bluemedia/nginx-live
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
       platforms: linux/amd64,linux/arm/v6,linux/arm64/v8
       tag: latest
 
